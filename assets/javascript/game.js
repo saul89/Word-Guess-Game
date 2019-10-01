@@ -23,6 +23,19 @@ String.prototype.replaceAt=function(index, replacement) {
     return this.substr(0, index) + replacement+ this.substr(index + replacement.length);
 }
 
+function restart(){
+    gMade = [];
+    document.getElementById("guessesMade").innerHTML = gMade;
+    gLeft = 12;
+    document.getElementById("guessesLeft").innerHTML = gLeft;
+    word = words[Math.floor(Math.random() * words.length)];
+    wordHidden = word;
+    for( i=0 ; i < wordHidden.length; i++ ){
+        wordHidden = wordHidden.replace(wordHidden[i],"_");
+    }
+    document.getElementById("currentWord").innerHTML = wordHidden;
+}
+
 function pressedKey(e){
 
     user = e.key.toLowerCase();
@@ -41,16 +54,7 @@ function pressedKey(e){
                         if(wordHidden === word){
                             wins++;
                             document.getElementById("wins").innerHTML = wins;
-                            gMade = [];
-                            document.getElementById("guessesMade").innerHTML = gMade;
-                            gLeft = 12;
-                            document.getElementById("guessesLeft").innerHTML = gLeft;
-                            word = words[Math.floor(Math.random() * words.length)];
-                            wordHidden = word;
-                            for( i=0 ; i < wordHidden.length; i++ ){
-                                wordHidden = wordHidden.replace(wordHidden[i],"_");
-                            }
-                            document.getElementById("currentWord").innerHTML = wordHidden;
+                            restart();
                         }
                     }
                 }
@@ -63,15 +67,6 @@ function pressedKey(e){
             }
 
         } else {
-            gMade = [];
-            document.getElementById("guessesMade").innerHTML = gMade;
-            gLeft = 12;
-            document.getElementById("guessesLeft").innerHTML = gLeft;
-            word = words[Math.floor(Math.random() * words.length)];
-            wordHidden = word;
-            for( i=0 ; i < wordHidden.length; i++ ){
-                wordHidden = wordHidden.replace(wordHidden[i],"_");
-            }
-            document.getElementById("currentWord").innerHTML = wordHidden;
+           restart();
         }
 }
