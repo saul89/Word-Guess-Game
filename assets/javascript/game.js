@@ -12,6 +12,9 @@ for( i=0 ; i < wordHidden.length; i++ ){
     wordHidden = wordHidden.replace(wordHidden[i],"_");
 }
 
+// src path to img
+document.getElementById("pic").src = "assets/images/" + word + ".png";
+
 // Change the HTML content of id="currentWord" (initially empty) in wordHidden (e.g. _ _ _ _)
 document.getElementById("currentWord").innerHTML = wordHidden;
 
@@ -29,6 +32,7 @@ function restart(){
     gLeft = 12;
     document.getElementById("guessesLeft").innerHTML = gLeft;
     word = words[Math.floor(Math.random() * words.length)];
+    document.getElementById("pic").src = "assets/images/" + word + ".png";
     wordHidden = word;
     for( i=0 ; i < wordHidden.length; i++ ){
         wordHidden = wordHidden.replace(wordHidden[i],"_");
